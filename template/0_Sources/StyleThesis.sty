@@ -1,0 +1,274 @@
+%#############################################################
+%
+% Fichier  : StyleThesis.sty
+% Auteur   : Erwann Camberlin (inspiré de Adrien Rouviere)
+%
+% Définition du package StyleThesis pour l'import de raccourcis
+% utiles pour l'écriture du manuscrit
+%
+%#############################################################
+
+\NeedsTeXFormat{LaTeX2e}                                        % Nécessite LaTeX2e ou une version plus récente
+\ProvidesClass{0_Sources/StyleThesis}[2026/01/13]               % Déclare le package "StyleThesis"
+
+% ?-----------------------------------------------------------
+% ? NOUVELLES TAILLES
+% ?-----------------------------------------------------------
+
+\newcommand\YUGE{\fontsize{50}{60}\selectfont}                  % Définit une commande \YUGE pour mettre le texte en TRÈS Très très grande taille
+\newcommand\Yuge{\fontsize{40}{48}\selectfont}                  % Définit une commande \Yuge pour mettre le texte en Très très grande taille
+\newcommand\yuge{\fontsize{30}{35}\selectfont}                  % Définit une commande \yuge pour mettre le texte en très grande taille
+
+% ?-----------------------------------------------------------
+% ? MISE EN PAGE
+% ?-----------------------------------------------------------
+
+% * Enlève l'entête des pages de fin de chapitre si nombre de pages impair
+\makeatletter
+ \renewcommand{\cleardoublepage}{%
+    \clearpage\ifodd\c@page\else\hbox{}\vspace*{\fill}
+    \thispagestyle{empty}% <--
+    \newpage\fi
+    }
+\makeatother
+
+% * Permet de mettre des mathématiques dans les titres
+\newcommand{\mtitre}[2]{\texorpdfstring{#1}{#2}}
+
+% * Affichage du textwidth (pour ajuster images par ex.)
+\newcommand\thetextsize{The current text width is : \printinunitsof{in}\prntlen{\textwidth}}
+
+% * Redéfinition des titres de partie
+\makeatletter
+\titleformat{\part}[display]
+  {\Yuge\scshape\filleft}
+  {\YUGE Partie~\Roman{part}}
+  {20pt}
+  {{#1}\thispagestyle{epigraph}}
+\makeatother
+
+
+% * Pagebackref
+\newcommand{\mapolicebackref}[1]{
+    \begin{flushright} \textit {\small #1} \end{flushright}
+}
+
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+        \mapolicebackref{Pas de citations} %
+    \or 
+        \mapolicebackref{Cité page #2} %
+    \else 
+        \mapolicebackref{#1 citations, pages #2}%
+    \fi
+}
+\renewcommand*{\backrefsep}{, }
+\renewcommand*{\backreftwosep}{ et~}
+\renewcommand*{\backreflastsep}{ et~}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\NAT@citexnum{\let\NAT@last@num\NAT@num}{\MakeLinkTarget[cite]{}\Hy@backout{\@citeb\@extra@b@citeb}\let\NAT@last@num\NAT@num}{}{\fail}
+\makeatother
+
+% * Liste des Codes
+\renewcommand\lstlistlistingname{Liste des codes}
+\renewcommand\lstlistingname{Code}
+
+% ?-----------------------------------------------------------
+% ? ENVIRONNEMENTS
+% ?-----------------------------------------------------------
+
+% * Environnement de résumé de chapitre
+\newenvironment{chapabstract}{
+    \centering
+    \vspace{-25px}
+    \tcolorbox[breakable, width=\textwidth, arc=0pt, colback=gray!30, colframe=gray!30]
+        {\section*{Préambule} 
+        \vspace{-10px}}
+        }{
+    \endtcolorbox
+}
+
+% * Environnement de conclusion de chapitre
+\newenvironment{chapbilan}{
+    \centering
+    \tcolorbox[breakable, width=\textwidth, before upper={\parindent15pt}, arc=0pt, colback=gray!30, colframe=gray!30]
+        {\section*{\centering En résumé}}
+        }{
+    \endtcolorbox
+}
+
+% * Environnement d'équation importante
+\newenvironment{keyequation}{
+    \tcolorbox[ams equation, width=\textwidth, arc=0pt, colback=blue!5, colframe=blue!70!black]
+    }{
+    \vspace{5px}
+    \endtcolorbox
+}
+
+% * Environnement de remarque
+\newenvironment{remarque}{
+    \begin{singlespacing}
+    \vspace{-15px}
+    \tcolorbox[breakable, width=\textwidth, arc=0pt, colback=yellow!10, colframe=yellow!50!black]
+    {\subsection*{Remarque}}
+    }{
+    \endtcolorbox
+    \end{singlespacing}
+}
+
+% * Environnement d'indication de besoin de référence
+\newcommand{\addref}[1]{\textcolor{red}{\fbox{\textsc{#1}}}}
+
+% ?-----------------------------------------------------------
+% ? RACCOURCIS
+% ?-----------------------------------------------------------
+
+% * Raccourcies Texte
+\newcommand{\cadire}{c'est-à-dire\ }
+\newcommand{\cf}{cf.\ }
+\newcommand{\ie}{\emph{i.e.\ }}
+
+% * Raccourcies Acronyme
+\newcommand{\onera}{\gls{ONERA}}
+\newcommand{\igloo}{\gls{IGLOO}}
+
+% ?-----------------------------------------------------------
+% ? MATHÉMATIQUES
+% ?-----------------------------------------------------------
+
+% * Fonctions mathématiques
+\newcommand{\eexp}[1]{e^{#1}}                                   % Fonction exponentielle e^{.}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}               % Valeur absolue |x|
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}              % Norme ||x||
+\newcommand{\fpos}[1]{\mathop{< #1 >^+}\nolimits}               % Fonction positive <x>^+
+\newcommand{\fneg}[1]{\mathop{< #1 >^-}\nolimits}               % Fonction négative <x>^-
+
+% * Algèbre linéaire
+\newcommand{\Id}{\gls{Id}}                                      % Matrice identité
+\newcommand{\tr}[1]{\mathop{\mathrm{\glslink{trace}{tr}( #1 )}}\nolimits}           % Trace de matrice tr(x)
+\newcommand{\scal}[2]{\left\langle #1 , #2\right\rangle}        % Produit scalaire <f,g>
+
+% * Dérivées
+\newcommandx\Dt[2][2=\gls{t}]{\dfrac{\mathrm{D}#1}{\mathrm{D}#2}}                   % Dérivée particulaire Dv/Dt
+\newcommandx\dt[2][2=\gls{t}]{\dfrac{\mathrm{d}#1}{\mathrm{d}#2}}                   % Dérivée droite dv/dt
+\newcommandx\ddt[2][2=\gls{t}]{\dfrac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}            % Dérivée droite seconde
+\newcommandx\dpart[2][2=\gls{t}]{\dfrac{\partial #1}{\partial #2}}                  % Dérivée partielle
+\newcommandx\ddpart[2][2=\gls{t}]{\dfrac{\partial^2 #1}{\partial #2^2}}             % Dérivée partielle seconde
+\newcommand\ddpartt[3]{\dfrac{\partial^2 #1}{\partial #2 \partial #3}}              % Dérivée partielle seconde 2
+\newcommand{\CL}[2]{\left.#1\right|_{#2}}                                           % Conditions limites
+
+% * Symboles divers
+\newcommand{\ii}{\mathit{i}}                                    % i complexe droit
+\newcommand{\dd}{\mathrm{d}}                                    % d droit (intégrales, dérivées...)
+\DeclareMathOperator{\e}{e}                                     % e constante exponentielle
+
+% * Opérateurs physiques
+\newcommand{\gradop}{\mathop{\gls{grad}}\nolimits}              % Gradiant
+\newcommand{\divop}{\mathop{\gradop~\cdot~}\nolimits}           % Divergence
+\newcommand{\lapop}{\mathop{\gls{lap}}\nolimits}                % Laplacien (delta)
+
+% ?-----------------------------------------------------------
+% ? TIKZ
+% ?-----------------------------------------------------------
+
+% * Tikz externalize
+\tikzexternalize[prefix=5_Images/TikZ/,
+                 optimize command away=\includepdf]
+
+% * Hauteur des figures
+\newcommand{\hauteurGrande}{6cm}
+\newcommand{\hauteurPetite}{5cm}
+\newcommand{\hauteurTresPetite}{4.5cm}
+
+% ?-----------------------------------------------------------
+% ? INCLUSIONS
+% ?-----------------------------------------------------------
+
+% * Inclusion de SVG
+\newcommand{\executeiffilenewer}[3]{%
+    \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+    {\pdffilemoddate{#2}}>0%
+    {\immediate\write18{#3}}\fi}
+\newcommand{\myincludesvg}[1]{%
+    \executeiffilenewer{#1.svg}{#1.pdf}%
+    {inkscape -z -D --file=#1.svg %
+    --export-pdf=#1.pdf --export-latex}%
+    \input{#1.pdf_tex}}
+
+% ~-----------------------------------------------------------
+
+% * Inclusion de Code Julia
+\newcommand{\CodeMatlab}[3]{
+    \lstinputlisting[style=Matlab-editor,basicstyle=\mlttfamily,escapechar=",mlshowsectionrules=true,
+    caption = {#2},label={#3}]{7_Codes/#1}}
+
+% * Inclusion de Code Julia
+\newcommand{\CodePython}[3]{
+    \lstinputlisting[language=Python3,caption={#2},label={#3}]{./6_Datas/Codes/#1}}
+
+% * Inclusion de Code Julia
+\newcommand{\CodeJulia}[3]{
+    {\fontsize{13}{15}\selectfont \jlinputlisting[caption={#2}, label={#3}]{./6_Datas/Codes/#1}}}
+
+
+% !===========================================================
+% !===========================================================
+% A tester plus bas %
+% !===========================================================
+% !===========================================================
+
+
+%===========================================================
+%
+%       ###          NOUVEAUX THEOREMES          ###
+%
+%===========================================================
+
+% -------- Redéfinition des styles --------
+\makeatletter
+ \renewtheoremstyle{plain}%
+    {\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
+    {\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)\theorem@separator]}
+ \renewtheoremstyle{break}%
+    {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator}\hbox{\strut}}}]}
+    {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\ ##2\ --- ##3\theorem@separator}%
+    \hbox{\strut}}}]}
+ \renewtheoremstyle{emptybreak}%
+    {\item[]}
+    {\item[\rlap{\vbox{\hbox{\hskip\labelsep\relax \theorem@headerfont ##3\theorem@separator}\hbox{\strut%
+    \vspace{1pt}}}}]}
+\makeatother
+
+% --------
+\newskip\theorempreskipamount
+\newskip\theorempostskipamount
+\theorempreskipamount\topsep
+\theorempostskipamount\topsep
+
+% -------- Définition des compteurs --------
+\newcommand\compteurth{chapter}
+
+% ..... ENVIRONEMENT !/definition!/ .....
+\theoremstyle{plain}
+\theoremseparator{.\hspace{8pt}}
+\setlength\theorempreskipamount{\baselineskip}
+\setlength\theorempostskipamount{\baselineskip}
+\theoremheaderfont{\bfseries\sffamily\upshape}
+\newtheorem{definition}{Définition}[\compteurth]
+
+% ..... ENVIRONEMENT !/definitionC!/ .....
+\theoremstyle{break}
+\theoremseparator{}
+\theoreminframepreskip{2pt}
+\theoreminframepostskip{2pt}
+\theoremheaderfont{\bfseries\sffamily\upshape}
+% \def\theoremframecommand{{\color{green!80!black} \vrule width 4pt}{\color{green!4!white} \vrule width 5pt}\colorbox{green!4!white}}
+\def\theoremframecommand{{\color{gray!80!white} \vrule width 4pt}{\color{gray!10!white} \vrule width 5pt}\colorbox{gray!10!white}}
+\newshadedtheorem{definitionC}[definition]{Définition}
+
+
+%#####################################################################################
+\endinput
+%#####################################################################################
