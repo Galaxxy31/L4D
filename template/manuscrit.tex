@@ -1,0 +1,252 @@
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%               MANUSCRIT DE THÈSE                      %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !===========================================================
+
+% * Classe du document (ClassThesis.cls)
+\documentclass{0_Sources/ClassThesis}
+
+% ?-----------------------------------------------------------
+% ? SETUP
+% ?-----------------------------------------------------------
+
+% * Infos sur la thèse
+\Titre{Titre de la thèse}
+\Auteur{Prénom NOM}
+\Soutenance{jj mois 2026}
+
+% ------------------------------------------------------------
+
+% * Packages (StyleThesis.sty)
+\usepackage{0_Sources/StyleThesis}
+
+% ------------------------------------------------------------
+
+% * Metadata du manuscrit
+\hypersetup{
+    pdfauthor={\theAuteur},
+    pdfsubject={Manuscrit de thèse de \theAuteur: \theTitre},
+    pdftitle={\theTitre},
+    pdfkeywords={Givrage, Turbulence, Transition, Jets, Simulation numérique}
+}
+
+% ------------------------------------------------------------
+
+% * Configuration du glossaire
+\loadglsentries{1_FrontMatter/Nomenclature}                     % Fichier .tex contenant la définitions des entrées gls
+    \setkeys{glslink}{hyper=true}                               % Rend les entrées gls cliquables (ramène à la page de nomenclature)
+    \renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}    % Rend les entrées gls noires
+
+% ------------------------------------------------------------
+
+% * Externalisation de Tikz
+\tikzexternaldisable%
+%\tikzexternalenable%
+
+% ?-----------------------------------------------------------
+% ? CHAPITRES
+% ?-----------------------------------------------------------
+
+\includeonly{
+% ~ FrontMatter
+    {1_FrontMatter/1_Couverture_de_these},
+    {1_FrontMatter/2_Seconde_de_couverture},
+    {1_FrontMatter/3_Remerciements},
+    {1_FrontMatter/4_Nomenclature},
+% ~ Chapitres
+    {2_Chapitres/0_Introduction},
+%
+    {2_Chapitres/1_Contexte},
+    {2_Chapitres/2_Theorie},
+    {2_Chapitres/3_Problematique},
+%
+    {2_Chapitres/4_Physique},
+    {2_Chapitres/5_Numerique},
+    {2_Chapitres/6_Experimentale},
+%
+    {2_Chapitres/7_Resultats},
+    {2_Chapitres/8_Discussion},
+%
+    {2_Chapitres/Conclusion},
+    {3_BackMatter/Valorisation},
+% ~ Annexes
+    {4_Annexes/A_Demonstration},
+    {4_Annexes/B_Algorithmes},
+% ~ BackMatter
+    {3_BackMatter/Resume},
+}
+
+% !===========================================================
+
+\begin{document}
+
+% ?-----------------------------------------------------------
+% ? FRONTMATTER
+% ?-----------------------------------------------------------
+
+\frontmatter%
+    \onehalfspacing%                                            % Espacement interligne à 1.5
+
+% * Couverture de thèse
+\includepdf{1_FrontMatter/couverture_these}
+    \cleardoublepage%
+
+% * Seconde de couverture
+\include{1_FrontMatter/2_Seconde_de_couverture}
+    \cleardoublepage%
+
+% * Remerciements
+\include{1_FrontMatter/3_Remerciements}
+    \cleardoublepage%
+
+% * Table des matières
+{\parskip=0pt                                                   % Pas d'interligne
+\backrefsetup{disable}                                          % Désactivation du backref le temps de la génération de la ToC
+\setcounter{tocdepth}{2}                                        % Profondeur de la ToC (chapter=0, section=1, subsection=2)
+\tableofcontents                                                % Génération de la ToC
+    \addcontentsline{toc}{chapter}{Table des matières}          % Rajout de la ToC en tant que chapitre (pour apparaitre dans la ToC)
+    \cleardoublepage%                                 
+\backrefsetup{enable}}                                          % Réactivation du backref
+
+% * Nomenclature
+\include{1_FrontMatter/4_Nomenclature}
+    \cleardoublepage%
+
+% ?-----------------------------------------------------------
+% ? MAINMATTER
+% ?-----------------------------------------------------------
+
+\mainmatter%
+    \adjustmtc%                                                 % Ajuste les mini-ToC si décallage
+
+% ~-----------------------------------------------------------
+
+% * Introduction
+\include{2_Chapitres/0_Introduction}        
+    \cleardoublepage%
+
+% ~-----------------------------------------------------------
+
+% * Partie 1 : État de l'art
+\epigraphhead[450]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}%
+\part{État de l'art}%
+\label{part:Etat_de_lart}
+
+% ------------------------------------------------------------
+
+\include{2_Chapitres/1_Contexte}
+    \cleardoublepage%
+\include{2_Chapitres/2_Theorie}
+    \cleardoublepage%
+\include{2_Chapitres/3_Problematique}
+    \cleardoublepage%
+
+% ~-----------------------------------------------------------
+
+% * Partie 2 : Développements
+\epigraphhead[500]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}%
+\part{Développements numériques et expérimentaux}%
+\label{part:Developpements_numériques_et_expérimentaux}
+
+% ------------------------------------------------------------
+
+\include{2_Chapitres/4_Physique}              
+    \cleardoublepage%
+\include{2_Chapitres/5_Numerique}
+    \cleardoublepage%
+\include{2_Chapitres/6_Experimentale}
+    \cleardoublepage%
+
+% ~-----------------------------------------------------------
+
+% * Partie 3 : Résultats
+\epigraphhead[550]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}%
+\part{Résultats et discussions}%
+\label{part:Resultats_et_discussions}
+
+% ------------------------------------------------------------
+
+\include{2_Chapitres/7_Resultats}
+    \cleardoublepage%
+\include{2_Chapitres/8_Discussion}
+    \cleardoublepage%
+
+% ~-----------------------------------------------------------
+
+% * Conclusion et valorisation des travaux
+\bookmarksetup{startatroot}                                     %TODO
+\include{2_Chapitres/Conclusion}
+    \cleardoublepage%
+\include{3_BackMatter/Valorisation}
+    \cleardoublepage%
+
+% ?-----------------------------------------------------------
+% ? ANNEXES
+% ?-----------------------------------------------------------
+
+\clearpage                                                      %TODO
+\appendix
+    \renewcommand{\chaptername}{Annexe}                         % Fait apparaitre "Annexe" au lieu de "Chapitre" dans le titre
+
+\epigraphhead[380]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}%
+\part*{Annexes}%
+\label{part:Annexes}
+
+% ------------------------------------------------------------
+
+\include{4_Annexes/A_Demonstration}
+    \cleardoublepage%
+\include{4_Annexes/B_Algorithmes}
+    \cleardoublepage%
+
+% ?-----------------------------------------------------------
+% ? BACKMATTER
+% ?-----------------------------------------------------------
+
+\backmatter%
+    \bookmarksetup{startatroot}
+
+% ~-----------------------------------------------------------
+
+% * Bibliographie
+\bibliographystyle{0_Sources/BiblioThese_abbrv}                 % Fichier de style pour la bibliographie (BiblioThese_abbrv.bst)
+\bibliography{3_BackMatter/Bibliographie}                       % Fichier des entrées bibliographique (Bibliographie.bib)
+    \addcontentsline{toc}{chapter}{Bibliographie}               % Ajout du chapitre "Bibliographie"
+    \cleardoublepage%
+
+% ~-----------------------------------------------------------
+
+\backrefsetup{disable}                                          % Désactivation du backref
+
+% * Liste des figures (ToF)
+\cleardoublepage%                                               %TODO
+\phantomsection%                                                % Création d'un point d'ancrage hyperlien pour la ToF
+\addcontentsline{toc}{chapter}{Liste des figures}               % Rajout de la ToF en tant que chapitre
+\listoffigures                                                  % Génération de la ToF
+\cleardoublepage%
+
+% * Liste des tableaux (ToT)
+\cleardoublepage%                                               %TODO
+\phantomsection%                                                % Création d'un point d'ancrage hyperlien pour la ToT
+\addcontentsline{toc}{chapter}{Liste des tableaux}              % Rajout de la ToT en tant que chapitre
+\listoftables                                                   % Génération de la ToT
+\pagestyle{empty}                                               %TODO
+\cleardoublepage%
+
+\backrefsetup{enable}                                           % Réactivation du backref
+
+% ~-----------------------------------------------------------
+
+% * Résumé
+\cleardoublepage%
+\ifodd\value{page}\hbox{}\newpage\fi                            % Fait apparaitre le rémusé en tant que dernière page du manuscrit (4ème de couverture)
+\phantomsection%                                                % Création d'un point d'ancrage hyperlien pour le résumé
+\addcontentsline{toc}{chapter}{Résumé}                          % Rajout du résumé en tant que chapitre
+\include{3_BackMatter/Resume}
+
+% !===========================================================
+
+\end{document}
