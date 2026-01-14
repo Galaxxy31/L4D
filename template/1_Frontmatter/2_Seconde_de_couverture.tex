@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                              %%
+%%              SECONDE DE COUVERTURE           %%
+%%                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ici vous n'avez qu'à modifier le verbatim pour la référence de votre manuscrit
+
+\pagestyle{empty}
+
+\vspace*{1cm}
+
+{
+    \begin{center}
+
+        {\bfseries En vue de l'obtention du} \\[0.5cm]
+        {\Large \bfseries Doctorat de l'Université de Toulouse} \\[0.5cm]
+        {\bfseries Délivré par:} {\it l'Institut Supérieur de l'Aéronautique et de l'Espace (ISAE)}\\[1.5cm]
+        \rule{\textwidth}{2.5pt}\\[-2ex]
+        \rule{\textwidth}{1.2pt}
+        {\bfseries \fontfamily{cmr} Présentée et soutenue le} \textit{\theSoutenance} {\bfseries \fontfamily{cmr} par:}\\[0.2cm]
+        \settowidth{\RuleWidth}{\Large\fontfamily{cmr}\textbf{\theAuteur}}
+        {\Large\textbf{\theAuteur}} \\[0.2cm]
+        \vspace{-5pt}
+        ~{\color{pdgred}\rule{1.2\RuleWidth}{0.8pt}}\\[0.2cm]
+        \vspace{3pt}
+        {\Large\bfseries \theTitre}
+        \rule{\textwidth}{1.2pt}\\[-1.6ex]
+        \rule{\textwidth}{2.5pt}\\[0.5cm]
+
+    \end{center}
+
+    {\bfseries Date:}\\[0.2cm]
+    \phantom{\bfseries Date: } \theSoutenance%
+}
+
+    \vfill
+
+    Pour citer cette thèse:
+    \begin{quote}
+        \theAuteur.
+        \theTitre.
+        ISAE-SUPAERO, Université de Toulouse, \theSoutenance.
+    \end{quote}
+
+    \vspace{0.4cm}
+
+    Entrée Bib\TeX{}:
+    \begin{quote}
+        \begin{verbatim}
+@phdthesis{id_reference,
+  title        = {Titre de la thèse},
+  author       = {Auteur de la thèse},
+  year         = {aaaa},
+  month        = mmm,
+  address      = {Toulouse, Occitanie, France},
+  school       = {ISAE-SUPAERO, Universit\'{e} de Toulouse},
+  type         = {Th\`{e}se de doctorat}
+}
+        \end{verbatim}
+    \end{quote}
+
+\cleardoublepage%
+
+\null%
+
+\epigraphhead[350]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}
+
+\null%
+
+\restoregeometry%
+\pagestyle{fancy}

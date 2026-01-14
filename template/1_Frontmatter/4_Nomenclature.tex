@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                              %%
+%%                Nomenclature                  %%
+%%                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Nomenclature}
+
+\mtcaddchapter%
+\addcontentsline{toc}{chapter}{Nomenclature}
+\markboth{Nomenclature}{Nomenclature}
+
+\textbf{Sauf mention contraire, les notations utilisées dans ce document sont celles définies ci-dessous.}
+
+\glsfindwidesttoplevelname%
+\setglossarystyle{alttree}
+
+% Vous pouvez rajouter des catégories de glossaire ici
+
+{
+\parskip=0pt
+
+% Acronymes
+\renewcommand*{\glossarysection}[2][]{\section*{Acronymes}}
+\printglossary[type=\acronymtype]
+
+% Lettres romanes
+\renewcommand*{\glossarysection}[2][]{\section*{Lettres romanes}}
+\printglossary[type=roman]
+
+% Lettres grecques
+\renewcommand*{\glossarysection}[2][]{\section*{Lettres grecques}}
+\printglossary[type=grec]
+
+% Opérateurs et Symboles
+\renewcommand*{\glossarysection}[2][]{\section*{Opérateurs et Fonctions}}
+\printglossary[type=operator]
+
+}

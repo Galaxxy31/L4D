@@ -1,0 +1,109 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                               %%
+%%            Définition Nomenclature            %%
+%%                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ================================================== %
+%              Types de nomenclatures                %
+% ================================================== %
+\newglossary[nlg]{notation}{not}{ntn}{Nomenclature}
+\newglossary[glg]{grec}{gre}{grc}{Lettres grecques}
+\newglossary[rlg]{roman}{rom}{rmn}{Lettres romanes}
+\newglossary[olg]{operator}{ope}{opr}{Opérateurs et Symboles}
+
+\renewcommand*{\glsnamefont}[1]{\textmd{#1}}
+
+\makeglossaries%
+
+% ================================================== %
+%                    Acronymes                       %
+% ================================================== %
+
+\newacronym{NASA}{NASA}{National Aeronautics and Space Administration}
+\newacronym{ONERA}{ONERA}{Office National d'Études et de Recherches Aérospatiales}
+\newacronym{IGLOO}{IGLOO}{IcinG tooL bOx Onera}
+
+% ================================================== %
+%                 Lettres romanes                    %
+% ================================================== %
+
+\newglossaryentry{Id}{
+  type=roman,
+  name={\ensuremath{\mathsfbfit{I_d}}},
+  description={Tenseur identité},
+  sort={Id}}
+
+\newglossaryentry{t}{
+  type=roman,
+  name={\ensuremath{t}},
+  description={Temps, $\unit{\second}$},
+  sort={temps}}
+
+\newglossaryentry{V}{
+  type=roman,
+  name={\ensuremath{\bm{V}}},
+  description={Vitesse, $\unit{\meter \per \second}$},
+  sort={vitesse}}
+
+\newglossaryentry{T}{
+  type=roman,
+  name={\ensuremath{T}},
+  description={Température, $\unit{\kelvin}$},
+  sort={Temperature}}
+
+% ================================================== %
+%                 Lettres grecques                   %
+% ================================================== %
+
+\newglossaryentry{rho}{
+  type=grec,
+  name={\ensuremath{\rho}},
+  description={Masse volumique, $\unit{\kilo \gram \per \cubic \meter}$},
+  sort={rho}}
+
+\newglossaryentry{dt}{
+  type=grec,
+  name={\ensuremath{\Delta_t}},
+  description={Pas de temps, $\unit{\second}$},
+  sort={Deltat}}
+
+\newglossaryentry{dx}{
+  type=grec,
+  name={\ensuremath{\Delta_x}},
+  description={Taille caractéristique moyenne du maillage, $\unit{\meter}$},
+  sort={Deltax}}
+
+% ================================================== %
+%              Opérateurs et Fonctions               %
+% ================================================== %
+
+\newglossaryentry{grad}{
+  type=operator,
+  name={\ensuremath{\bm{\nabla}}},
+  description={Opérateur gradient (nabla)},
+  sort={opgrad}}
+
+\newglossaryentry{lap}{
+  type=operator,
+  name={\ensuremath{\bm{\Delta}}},
+  description={Opérateur Laplacien, $\divop \gradop$},
+  sort={oplap}}
+
+\newglossaryentry{trace}{
+  type=operator,
+  name={\ensuremath{tr(\cdot)}},
+  description={Trace du tenseur},
+  sort={functr}}
+
+\newglossaryentry{pos}{
+  type=operator,
+  name={\ensuremath{\fpos{\cdot}}},
+  description={Fonction positive},
+  sort={funcpos}}
+
+\newglossaryentry{neg}{
+  type=operator,
+  name={\ensuremath{\fneg{\cdot}}},
+  description={Fonction négative},
+  sort={funcneg}}
