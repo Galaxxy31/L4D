@@ -1,0 +1,51 @@
+%########################################################################
+% 
+% Fichier  : Julialistings.sty
+% Auteur   : Erwann Camberlin
+%
+%########################################################################
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{Julialistings}[2025/05/13]
+
+\RequirePackage[autoload=true,linenumbers=true]{0_Sources/jlcode/jlcode}
+
+% ------------------------------------------------------------
+
+% Les commandes de bases de Julia sont normalement déjà définies dans le package jlcode
+
+% Si vous voulez definir de nouvelles fonctions, indiquer des chaines de cractères où des macros vous pouvez utiliser les fonctions ci-dessous
+
+% Définition des commandes \addlitjlbase, \addlitjlstr, \addlitjlnum, \addlitjlmacros et \addlitjlfunctions
+% Arguments : #1 séquence de caractère à reconnaitre, #2 par quoi remplacer, #3 nombre de caractères de la séquence
+
+% \addlitjlbase{#1}{#2}{#3}
+% \addlitjlstr{#1}{#2}{#3}
+% \addlitjlnum{#1}{#2}{#3}
+% \addlitjlmacros{#1}{#2}{#3}
+% \addlitjlfunctions{#1}{#2}{#3}
+
+% ------------------------------------------------------------
+
+% * Exemple d'utilisation pour la librairie Bcube.jl
+
+\addlitjlfunctions{read_mesh}{read\_mesh}{9}
+\addlitjlfunctions{FunctionSpace}{FunctionSpace}{13}
+\addlitjlfunctions{TrialFESpace}{TrialFESpace}{12}
+\addlitjlfunctions{TestFESpace}{TestFESpace}{11}
+\addlitjlfunctions{Measure}{Measure}{7}
+\addlitjlfunctions{CellDomain}{CellDomain}{10}
+\addlitjlfunctions{BoundaryFaceDomain}{BoundaryFaceDomain}{18}
+
+\addlitjlfunctions{∫}{$\int$}{1}
+\addlitjlfunctions{∇}{$\nabla$}{1}
+\addlitjlfunctions{⊗}{$\otimes$}{1}
+
+\addlitjlfunctions{assemble_bilinear}{assemble\_bilinear}{17}
+\addlitjlfunctions{assemble_linear}{assemble\_linear}{15}
+\addlitjlfunctions{assemble_dirichlet_vector}{assemble\_dirichlet\_vector}{25}
+\addlitjlfunctions{apply_dirichlet_to_matrix!}{apply\_dirichlet\_to\_matrix!}{26}
+\addlitjlfunctions{apply_homogeneous_dirichlet_to_vector!}{apply\_homogeneous\_dirichlet\_to\_vector!}{38}
+
+\addlitjlfunctions{set_dof_values!}{set\_dof\_values!}{15}
+

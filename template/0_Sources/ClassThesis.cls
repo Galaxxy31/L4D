@@ -81,7 +81,7 @@
 % ? FONTS
 % ?-----------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}                                 % Permet de convertir divers encodage standards en "language interne LaTeX"
+\RequirePackage[utf8]{inputenc}                                 % Permet de convertir divers encodages standards en "language interne LaTeX"
 \RequirePackage[T1]{fontenc}                                    % Permet l'encodage de la police
 \RequirePackage{fourier}                                        % Charge la police Fourier
 \RequirePackage[babel=true,kerning=true]{microtype}             % Améliore la typographie
