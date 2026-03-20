@@ -177,10 +177,10 @@
 % ~-----------------------------------------------------------
 
 % * Conclusion et valorisation des travaux
-\bookmarksetup{startatroot}                                     %TODO
+\bookmarksetup{startatroot}
 \include{2_Chapitres/Conclusion}
     \cleardoublepage%
-%\include{3_BackMatter/Valorisation}
+\include{3_BackMatter/Valorisation}
     \cleardoublepage%
 
 % ?-----------------------------------------------------------
@@ -189,7 +189,7 @@
 
 \clearpage                                                      %TODO
 \appendix
-    \renewcommand{\chaptername}{Annexe}                         % Fait apparaitre "Annexe" au lieu de "Chapitre" dans le titre
+\renewcommand{\chaptername}{Annexe}                             % Fait apparaitre "Annexe" au lieu de "Chapitre" dans le titre
 
 \epigraphhead[380]{\large\it{Citation}\par\hfill\textsc{-- Auteur}}%
 \part*{Annexes}%
@@ -245,7 +245,7 @@
 \ifodd\value{page}\hbox{}\newpage\fi                            % Fait apparaitre le rémusé en tant que dernière page du manuscrit (4ème de couverture)
 \phantomsection%                                                % Création d'un point d'ancrage hyperlien pour le résumé
 \addcontentsline{toc}{chapter}{Résumé}                          % Rajout du résumé en tant que chapitre
-%\include{3_BackMatter/Resume}
+\include{3_BackMatter/Resume}
 
 % !===========================================================
 

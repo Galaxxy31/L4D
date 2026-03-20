@@ -47,6 +47,14 @@
 \makeatother
 
 % ?-----------------------------------------------------------
+% ? BIBLIOGRAPHIE
+% ?-----------------------------------------------------------
+
+\RequirePackage[sort&compress,comma,numbers]{natbib}            % Gestion de la bibliographie : citation numérique, citations multiples séparées par virgules, trie et compresse les citations consécutives
+\RequirePackage{bibentry}
+    \nobibliography*
+
+% ?-----------------------------------------------------------
 % ? CONFIGURATION & GÉOMETRIE
 % ?-----------------------------------------------------------
 
@@ -305,14 +313,6 @@
 
 %\RequirePackage[automake,xindy={language=french},acronym,indexonlyfirst,nonumberlist]{glossaries-extra}        % Glossaire
 \RequirePackage[automake,makeindex,acronym,indexonlyfirst,nonumberlist]{glossaries-extra}       % Permet de gérer la nomenclature
-
-% ?-----------------------------------------------------------
-% ? BIBLIOGRAPHIE
-% ?-----------------------------------------------------------
-
-\RequirePackage[sort&compress,comma,numbers]{natbib}            % Gestion de la bibliographie : citation numérique, citations multiples séparées par virgules, trie et compresse les citations consécutives
-\RequirePackage{bibentry}
-    \nobibliography*
 
 %#############################################################
 \endinput

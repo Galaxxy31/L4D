@@ -1,0 +1,108 @@
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%                      Résumé                           %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{
+    \fontfamily{lmr}
+    \renewcommand{\bfdefault}{bx}
+    \selectfont
+
+% ?-----------------------------------------------------------
+% ? CADRE EXTERNE
+% ?-----------------------------------------------------------
+
+\makeatletter
+    \newcommand\MakeBackgroundResume{
+        \setlength{\@pdrLinethickness}{1pt}                                                   % Définit l'épaisseur des lignes du cadre
+        \setlength{\@pdrMargeSize}{15mm}                                                      % Définit la taille des marges intérieures
+        \setlength{\@pdrInnerBoxWidth}{\paperwidth-2\@pdrMargeSize-2\@pdrLinethickness}       % Calcule la largeur intérieure du cadre
+        \setlength{\@pdrInnerBoxHeight}{\paperheight-2\@pdrMargeSize-2\@pdrLinethickness}     % Calcule la hauteur intérieure du cadre
+        \put(\LenToUnit{\@pdrMargeSize},\LenToUnit{\@pdrMargeSize}){                          % Place le cadre aux coordonnées avec la couleur définie
+            \color{abscolor}                                                                  % Applique la couleur définie pour le cadre
+            \framebox(\LenToUnit{\@pdrInnerBoxWidth},\LenToUnit{\@pdrInnerBoxHeight}){}       % Dessine le cadre
+        }
+    }
+\makeatother
+
+% ?-----------------------------------------------------------
+% ? GEOMETRIE DE LA PAGE
+% ?-----------------------------------------------------------
+
+\thispagestyle{empty}                                           % Supprime l'en-tête et le pied de page
+\newgeometry{centering, vmargin=2cm, hmargin=2cm}               % Redéfinit les marges
+\AddToShipoutPictureBG*{\MakeBackgroundResume}                  % Ajoute le cadre de fond
+
+% ?-----------------------------------------------------------
+% ? EN-TETE
+% ?-----------------------------------------------------------
+
+\begin{center}
+    \bigskip
+    {\huge \textcolor{abscolor}{\usefont{OT1}{phv}{b}{n}\selectfont DOCTORAT DE L'UNIVERSIT\'E DE TOULOUSE}}
+\end{center}
+
+\vfill
+
+% ?-----------------------------------------------------------
+% ? INFORMATIONS DE LA THESE
+% ?-----------------------------------------------------------
+{\parskip=0pt
+{\raggedright\bfseries Délivrée par :} {\itshape ISAE - SUPAÉRO}
+
+{\raggedright\bfseries École doctorale et spécialité :} {\itshape MEGeP -- Dynamique des fluides}
+
+{\raggedright\bfseries Unité de Recherche :} {\itshape ISAE-ONERA EDyF Énergétique et Dynamique des Fluides}
+}
+
+{\raggedright\rule{\textwidth}{2.5pt}}\\[-2ex]
+{\raggedright\rule{\textwidth}{1.2pt}}\\[-0.7cm]
+\begin{center}
+    {\bfseries \fontfamily{cmr} Présentée et soutenue le} \textit{\theSoutenance} {\bfseries \fontfamily{cmr} par } \textbf{\theAuteur}
+\end{center}
+\vspace*{-0.4cm}
+{\raggedright\rule{\textwidth}{1.2pt}}\\[-1.6ex]
+{\raggedright\rule{\textwidth}{2.5pt}}
+
+\vfill
+
+% ?-----------------------------------------------------------
+% ? RESUME EN FRANÇAIS
+% ?-----------------------------------------------------------
+
+{\raggedright\bfseries\color{abscolor} Titre:} {\bfseries \theTitre}
+
+\noindent \lipsum[1-2]
+
+{\raggedright\bfseries\color{abscolor} Mots-clés:} LaTeX, Doctorants, DMPE, Simulation numérique, Mesure expérimentale
+
+% ?-----------------------------------------------------------
+% ? SEPARATEUR
+% ?-----------------------------------------------------------
+
+\vfill
+
+\begin{center}
+    \vspace{-10px}
+    \color{abscolor}\underline{\hspace{5cm}}
+\end{center}
+
+\vfill
+
+% ?-----------------------------------------------------------
+% ? RESUME EN ANGLAIS
+% ?-----------------------------------------------------------
+
+{\raggedright\bfseries\color{abscolor} Title:} {\bfseries Votre titre de thèse en anglais}
+
+\noindent \lipsum[1-2]
+
+{\raggedright\bfseries\color{abscolor} Keywords:} LaTeX, PhD students, DMPE, Numerical Simulation, Experimental Measurement
+
+\vfill
+
+\restoregeometry%
+\pagestyle{headings}
+
+}
