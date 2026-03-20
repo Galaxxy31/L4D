@@ -112,6 +112,20 @@
 \definecolor{abscolor}{rgb}{0.05098, 0.31765, 0.50588}          %TODO
 
 % ?-----------------------------------------------------------
+% ? LONGUEURS
+% ?-----------------------------------------------------------
+
+\newlength{\RuleWidth}
+
+% * Longueurs pour la page de résumé
+\makeatletter
+    \newlength{\@pdrLinethickness}
+    \newlength{\@pdrMargeSize}
+    \newlength{\@pdrInnerBoxWidth}
+    \newlength{\@pdrInnerBoxHeight}
+\makeatother
+
+% ?-----------------------------------------------------------
 % ? EN-TÊTE
 % ?-----------------------------------------------------------
 
@@ -124,6 +138,28 @@
         \fancyhead[LO]{\nouppercase{\rightmark}}                % Affiche le titre de section à gauche sur les pages impaires
         \fancyhead[RE]{\nouppercase{\leftmark}}                 % Affiche le titre de chapitre à droite sur les pages paires
         %\renewcommand{\headrulewidth}{0pt}                     %TODO
+
+% ?-----------------------------------------------------------
+% ? TABLE DES MATIERES
+% ?-----------------------------------------------------------
+
+\RequirePackage[titles]{tocloft}                                % Permet de personnaliser la ToC, ToF et ToT
+\RequirePackage[french,nohints]{minitoc}                        % Permet de générer des mini-ToC au début de chaque chapitre
+    \setcounter{minitocdepth}{2}                                % Profondeur du mini-ToC (chapter=0, section=1, subsection=2)
+    \dominitoc                                                  % Active la génèration des mini-ToC
+
+% ?-----------------------------------------------------------
+% ? CHAPITRES
+% ?-----------------------------------------------------------
+
+\RequirePackage[Lenny]{fncychap}                                % Permet de personnaliser l’apparence des chapitres
+    \ChNameVar{\fontsize{18}{20}\scshape\selectfont}            % Définit le style du mot "Chapitre"
+    \ChNumVar{\normalfont\fontsize{60}{62}\selectfont}          % Définit le style du numéro du chapitre
+    \ChTitleVar{\Huge\bfseries}                                 % Définit le style du titre du chapitre
+    \makeatletter                                               % Modification des marges supérieurs des chapitres
+        \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{25\p@}}{}{}          % Réduit l’espace vertical avant les chapitres numérotés
+        \patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{25\p@}}{}{}         % Réduit l’espace vertical avant les chapitres non numérotés
+    \makeatother
 
 % ?-----------------------------------------------------------
 % ? NAVIGATION
@@ -154,15 +190,6 @@
 \RequirePackage{bookmark}                                       % Optimise et organise les bookmarks pour le PDF, améliore hyperref
 
 % ?-----------------------------------------------------------
-% ? TABLE DES MATIERES
-% ?-----------------------------------------------------------
-
-\RequirePackage[titles]{tocloft}                                % Permet de personnaliser la ToC, ToF et ToT
-\RequirePackage[french,nohints]{minitoc}                        % Permet de générer des mini-ToC au début de chaque chapitre
-    \setcounter{minitocdepth}{2}                                % Profondeur du mini-ToC (chapter=0, section=1, subsection=2)
-    \dominitoc                                                  % Active la génèration des mini-ToC
-
-% ?-----------------------------------------------------------
 % ? PERSONALISATION
 % ?-----------------------------------------------------------
 
@@ -174,19 +201,6 @@
     \setlength\epigraphwidth{.7\textwidth}
 
 \RequirePackage[shortlabels]{enumitem}                          % Permet de personnaliser les listes
-
-% ?-----------------------------------------------------------
-% ? CHAPITRES
-% ?-----------------------------------------------------------
-
-\RequirePackage[Lenny]{fncychap}                                % Permet de personnaliser l’apparence des chapitres
-    \ChNameVar{\fontsize{18}{20}\scshape\selectfont}            % Définit le style du mot "Chapitre"
-    \ChNumVar{\normalfont\fontsize{60}{62}\selectfont}          % Définit le style du numéro du chapitre
-    \ChTitleVar{\Huge\bfseries}                                 % Définit le style du titre du chapitre
-    \makeatletter                                               % Modification des marges supérieurs des chapitres
-        \patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{25\p@}}{}{}          % Réduit l’espace vertical avant les chapitres numérotés
-        \patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{25\p@}}{}{}         % Réduit l’espace vertical avant les chapitres non numérotés
-    \makeatother
 
 % ?-----------------------------------------------------------
 % ? MATHEMATIQUES
