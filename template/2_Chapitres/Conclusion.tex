@@ -1,0 +1,34 @@
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%                     Conclusion                        %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !===========================================================
+
+\graphicspath{{5_Images/9_Conclusion/}}                         % Chemin vers le stockage des images du chapitre
+\makeatletter
+\def\input@path{{5_Images/9_Conclusion/}}                       % Pareil que au dessus
+\makeatother
+
+% !===========================================================
+
+\chapter*{Conclusion et perspectives}\label{Chap:Conclusion}    % Ajout du chapitre en tant que chapitre fantôme (pour ne pas lui attribuer de numéro)
+
+\mtcaddchapter%                                                 % Permet d'ajouter manuellement un mini-ToC fantôme à cause du \chapter*
+\addcontentsline{toc}{chapter}{Conclusion et perspectives}      % Ajout du chapitre à la ToC
+\markboth{Conclusion}{Conclusion}                               % Permet d'afficher le chapitre en en-tête
+
+% !===========================================================
+
+% ?-----------------------------------------------------------
+\section*{Conclusion}
+% ?-----------------------------------------------------------
+
+\lettrine{C}{onclusion} \lipsum[1-4]%
+
+% ?-----------------------------------------------------------
+\section*{Perspectives}
+% ?-----------------------------------------------------------
+
+\lipsum[1-4]%

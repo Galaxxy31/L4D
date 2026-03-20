@@ -1,0 +1,44 @@
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%                   Introduction                        %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !===========================================================
+
+\graphicspath{{5_Images/0_Introduction/}}                       % Chemin vers le stockage des images du chapitre
+\makeatletter
+\def\input@path{{5_Images/0_Introduction/}}                     % Pareil que au dessus
+\makeatother
+
+% !===========================================================
+
+\chapter*{Introduction}\label{Chap:Introduction}                % Ajout du chapitre en tant que chapitre fantôme (pour ne pas lui attribuer de numéro)
+
+\mtcaddchapter%                                                 % Permet d'ajouter manuellement un mini-ToC fantôme à cause du \chapter*
+\addcontentsline{toc}{chapter}{Introduction}                    % Ajout du chapitre à la ToC
+\markboth{Introduction}{Introduction}                           % Permet d'afficher le chapitre en en-tête
+
+% !===========================================================
+
+% Je vous montre un exemple de la structure de mon introduction mais adaptez à votre sauce
+
+% ?-----------------------------------------------------------
+\section*{Préambule}
+% ?-----------------------------------------------------------
+
+\lettrine{L}{orem} ipsum...
+
+\lipsum[1-3]%
+
+% ?-----------------------------------------------------------
+\section*{Contexte industriel}
+% ?-----------------------------------------------------------
+
+\lipsum[1-3]%
+
+% ?-----------------------------------------------------------
+\section*{Cadre technique et scientifique}
+% ?-----------------------------------------------------------
+
+\lipsum[1-3]%
