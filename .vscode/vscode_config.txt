@@ -1,0 +1,134 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "Git Bash": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "icon": "terminal-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+
+    // LaTeX
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%",
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+                "%DOCFILE%",
+            ],
+            "env": {}
+        },
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex * 2",
+            "tools": [
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex * 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "Full Compilation",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "makeglossaries",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.latex.autoBuild.run" : "never",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.clean.method": "glob",
+    "latex-workshop.latex.autoClean.run" : "onSucceeded",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "%DOCFILE%.aux",
+        "%DOCFILE%.bbl",
+        "%DOCFILE%.blg",
+        "%DOCFILE%.idx",
+        "%DOCFILE%.ind",
+        "%DOCFILE%.lof",
+        "%DOCFILE%.lot",
+        "%DOCFILE%.out",
+        "%DOCFILE%.toc",
+        "%DOCFILE%.acn",
+        "%DOCFILE%.acr",
+        "%DOCFILE%.alg",
+        "%DOCFILE%.glg",
+        "%DOCFILE%.glo",
+        "%DOCFILE%.gls",
+        "%DOCFILE%.fls",
+        "%DOCFILE%.log",
+        "%DOCFILE%.fdb_latexmk",
+        "%DOCFILE%.snm",
+        "%DOCFILE%.synctex(busy)",
+        "%DOCFILE%.synctex.gz(busy)",
+        "%DOCFILE%.synctex.gz.sum.synctex",
+        "%DOCFILE%.nav",
+        "%DOCFILE%.vrb",
+        "%DOCFILE%.mtc*",
+        "%DOCFILE%.brf",
+        "%DOCFILE%.ilg",
+        "%DOCFILE%.maf",
+        "%DOCFILE%.nlo",
+        "%DOCFILE%.nls",
+        "%DOCFILE%.mw",
+        "%DOCFILE%.thm",
+        "%DOCFILE%.auxlock",
+        "%DOCFILE%.grc",
+        "%DOCFILE%.ntn",
+        "%DOCFILE%.rmn",
+        "%DOCFILE%.xdy",
+        "%DOCFILE%.olg",
+        "%DOCFILE%.gre",
+        "%DOCFILE%.nlg",
+        "%DOCFILE%.not",
+        "%DOCFILE%.rlg",
+        "%DOCFILE%.rom",
+        "%DOCFILE%.ope",
+        "%DOCFILE%.opr",
+        "%DOCFILE%.ist",
+        "*/*.aux",
+    ],
+
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.zoom": "page-width",
+}

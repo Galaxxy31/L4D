@@ -1,0 +1,112 @@
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%                     DEMONSTRATION                     %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !===========================================================
+
+\graphicspath{{5_Images/A_Demonstration/}}                      % Chemin vers le stockage des images du chapitre
+\makeatletter
+\def\input@path{{5_Images/A_Demonstration/}}                    % Pareil que au dessus
+\makeatother
+
+\chapter{Test des environnements et commandes}\label{Annexe:Test}    % Ajout d'un nouveau chapitre
+
+% !===========================================================
+
+% ?-----------------------------------------------------------
+\section{Nomenclature}\label{Annexe_A:Nomenclature}
+% ?-----------------------------------------------------------
+
+Cette section présente l’ensemble des variables, symboles et opérations définis dans le fichier \emph{Nomenclature.tex}, organisés de manière claire et cohérente. L’avantage principal de cette nomenclature est sa dimension interactive: dans le PDF final, chaque terme devient un lien cliquable qui renvoie directement à sa définition complète dans le glossaire. Ainsi, plus besoin de perdre du temps à chercher une notation ou une équation, tout est accessible en un clic. Cela rend non seulement le document plus rigoureux, mais aussi bien plus pratique à consulter, que ce soit pour vous ou pour vos lecteurs.
+
+% ~-----------------------------------------------------------
+\subsection{Acronymes}\label{Annexe_A:Acronymes}
+% ~-----------------------------------------------------------
+
+Vous travaillez actuellement à l'\gls{ONERA}, qui est un équivalent français de la \gls{NASA}, qui a développé un code de givrage appelé \gls{IGLOO}.
+
+% ~-----------------------------------------------------------
+\subsection{Romane}\label{Annexe_A:Romane}
+% ~-----------------------------------------------------------
+
+Pour simplifier les notations, on note respectivement le temps, la vitesse et la température par \gls{t}, \gls{V} et \gls{T}, tandis que la matrice identité est désignée par \gls{Id} dans tout le document.
+
+% ~-----------------------------------------------------------
+\subsection{Greques}\label{Annexe_A:Greques}
+% ~-----------------------------------------------------------
+
+Dans les équations présentées, on utilise respectivement \gls{rho} pour la masse volumique, \gls{dt} pour le pas de temps et \gls{dx} pour la taille caractéristique du maillage.
+
+% ~-----------------------------------------------------------
+\subsection{Symboles}\label{Annexe_A:Symboles}
+% ~-----------------------------------------------------------
+
+Dans les développements mathématiques, nous utilisons \gls{grad} pour l'opérateur gradient, \gls{lap} pour le Laplacien, ainsi que \gls{trace} pour la trace d'un tenseur, tandis que les fonctions \gls{pos} et \gls{neg} permettent de distinguer les parties positives et négatives des expressions.
+
+% ?-----------------------------------------------------------
+\section{Environnements}\label{Annexe_A:Environnements}
+% ?-----------------------------------------------------------
+
+Vous connaissez déjà surement l'environnement \texttt{equation} qui permet, comme son nom l'indique, d'écrire des équations:
+
+\begin{equation}
+    \text{Café} \propto \frac{1}{\text{Sommeil}} \quad \text{et} \quad
+    \lim_{t \to \text{Deadline}} \text{Stress}(t) = +\infty
+\end{equation}
+
+Mais parfois, on aimerait mettre l'accent sur une équation particulièrement importante de notre travail. Pour cela, on peut créer un environnement dédié comme \texttt{keyequation} (que j'ai moi-même défini et qui n'est pas natif à \LaTeX):
+
+\begin{keyequation}
+    \gls{rho} \left( \frac{\partial \gls{V}}{\partial \gls{t}} 
+    + (\gls{V} \cdot \gls{grad}) \gls{V} \right)
+    = -\gls{grad} p + \mu \gls{lap} \gls{V} + \gls{rho} \bm{g}
+\end{keyequation}
+
+Les environnements sont des zones que vous pouvez créer pour structurer et faire ressortir des parties de votre travail. Vous en avez déjà croisé plusieurs à travers les chapitres avec \texttt{chapabstract} et \texttt{chapbilan}.
+
+Vous pouvez créer les vôtres dans le fichier \texttt{StyleThesis.sty}. Par exemple, vous pourriez avoir envie d'ajouter une remarque sur ce que vous venez d'écrire:
+
+\begin{remarque}
+    Cette équation est valable sous l'hypothèse d'un fluide incompressible en régime permanent.
+\end{remarque}
+
+% ?-----------------------------------------------------------
+\section{Bibliographie}\label{Annexe_A:Bibliographie}
+% ?-----------------------------------------------------------
+
+% ?-----------------------------------------------------------
+\section{Autres tests}\label{Annexe_A:Miscellaneous}
+% ?-----------------------------------------------------------
+
+\CodeJulia{Romea_projOp.jl}{Exemple d'intégration de code Julia}{code:projOp}
+
+\begin{table}[h]
+    \centering
+    \caption{Corrélation entre paramètres expérimentaux et productivité du doctorant}
+    \label{tab:productivite}
+    \begin{tabular}{lcccc}
+        \hline
+        \hline
+        \textbf{Paramètre} & \textbf{Symbole} & \textbf{Valeur} & \textbf{Unité} & \textbf{Effet sur la thèse} \\
+        \hline
+        Consommation de café & $C_c$ & $3.7 \pm 0.5$ & tasses/heure & $+42\%$ productivité \\
+        Heures de sommeil & $H_s$ & $4.2 \pm 1.3$ & heures/nuit & $-30\%$ cohérence \\
+        Procrastination & $P$ & $87$ & \% du temps & $+200\%$ créativité \\
+        Niveau de stress & $\sigma$ & $9.8$ & /10 & $+100\%$ typographie \\
+        Deadline & $\mathbb{D}$ & $-2$ & jours & $+\infty\%$ motivation \\
+        \gls{rho} (masse volumique) & $\gls{rho}$ & $?$ & $\unit{\kilo\gram\per\cubic\meter}$ & "À mesurer demain" \\
+        \gls{V} (vitesse) & $\gls{V}$ & $\approx c$ & $\unit{\meter\per\second}$ & "Dépend du café" \\
+        \gls{T} (température) & $\gls{T}$ & $310.15$ & $\unit{\kelvin}$ & "Fièvre de la deadline" \\
+        \hline
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[scale=1]{Potit_Blagueur.jpeg}
+    \caption{Exemple d'image d'un potit blagueur}
+    \label{fig:potit_blagueur}
+\end{figure}

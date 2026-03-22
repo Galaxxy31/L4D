@@ -1,38 +1,50 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                              %%
-%%                Nomenclature                  %%
-%%                                              %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% &%%                                                       %%
+% &%%                     NOMENCLATURE                      %%
+% &%%                                                       %%
+% &%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% !===========================================================
 
 \chapter*{Nomenclature}
 
-\mtcaddchapter%
-\addcontentsline{toc}{chapter}{Nomenclature}
-\markboth{Nomenclature}{Nomenclature}
+\mtcaddchapter%                                                 % Ajout du chapitre en tant que chapitre fantôme (pour ne pas lui attribuer de numéro)
+\addcontentsline{toc}{chapter}{Nomenclature}                    % Ajout du chapitre à la ToC
+\markboth{Nomenclature}{Nomenclature}                           % Permet d'afficher le chapitre en en-tête
+
+% !===========================================================
 
 \textbf{Sauf mention contraire, les notations utilisées dans ce document sont celles définies ci-dessous.}
 
-\glsfindwidesttoplevelname%
-\setglossarystyle{alttree}
+\glsfindwidesttoplevelname%                                     % Calcule la largeur du terme le plus long
+\setglossarystyle{alttree}                                      % Définit le style du glossaire
 
 % Vous pouvez rajouter des catégories de glossaire ici
 
 {
 \parskip=0pt
 
-% Acronymes
+% ?-----------------------------------------------------------
+% ? ACRONYMES
+% ?-----------------------------------------------------------
 \renewcommand*{\glossarysection}[2][]{\section*{Acronymes}}
 \printglossary[type=\acronymtype]
 
-% Lettres romanes
+% ?-----------------------------------------------------------
+% ? LETTRES ROMANES
+% ?-----------------------------------------------------------
 \renewcommand*{\glossarysection}[2][]{\section*{Lettres romanes}}
 \printglossary[type=roman]
 
-% Lettres grecques
+% ?-----------------------------------------------------------
+% ? LETTRES GRECQUES
+% ?-----------------------------------------------------------
 \renewcommand*{\glossarysection}[2][]{\section*{Lettres grecques}}
 \printglossary[type=grec]
 
-% Opérateurs et Symboles
+% ?-----------------------------------------------------------
+% ? OPERATEURS ET SYMBOLES
+% ?-----------------------------------------------------------
 \renewcommand*{\glossarysection}[2][]{\section*{Opérateurs et Fonctions}}
 \printglossary[type=operator]
 
