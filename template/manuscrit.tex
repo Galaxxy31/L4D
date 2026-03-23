@@ -187,7 +187,6 @@
 % ? ANNEXES
 % ?-----------------------------------------------------------
 
-\clearpage                                                      %TODO
 \appendix
 \renewcommand{\chaptername}{Annexe}                             % Fait apparaitre "Annexe" au lieu de "Chapitre" dans le titre
 
@@ -220,26 +219,23 @@
 \backrefsetup{disable}                                          % Désactivation du backref
 
 % * Liste des figures (ToF)
-\cleardoublepage%                                               %TODO
 \phantomsection%                                                % Création d'un point d'ancrage hyperlien pour la ToF
 \addcontentsline{toc}{chapter}{Liste des figures}               % Rajout de la ToF en tant que chapitre
 \listoffigures                                                  % Génération de la ToF
 \cleardoublepage%
 
 % * Liste des tableaux (ToT)
-\cleardoublepage%                                               %TODO
 \phantomsection%                                                % Création d'un point d'ancrage hyperlien pour la ToT
 \addcontentsline{toc}{chapter}{Liste des tableaux}              % Rajout de la ToT en tant que chapitre
 \listoftables                                                   % Génération de la ToT
-\pagestyle{empty}                                               %TODO
 \cleardoublepage%
 
+\pagestyle{empty}                                               %TODO
 \backrefsetup{enable}                                           % Réactivation du backref
 
 % ~-----------------------------------------------------------
 
 % * Résumé
-\cleardoublepage%
 \ifodd\value{page}\hbox{}\newpage\fi                            % Fait apparaitre le rémusé en tant que dernière page du manuscrit (4ème de couverture)
 \phantomsection%                                                % Création d'un point d'ancrage hyperlien pour le résumé
 \addcontentsline{toc}{chapter}{Résumé}                          % Rajout du résumé en tant que chapitre
