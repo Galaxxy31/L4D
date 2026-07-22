@@ -9,6 +9,12 @@
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "editor.unicodeHighlight.ambiguousCharacters": false,
 
+    // CSpell
+    "cSpell.enabled": true,
+    "cSpell.language": "en,fr",
+    "cSpell.suggestionMenuType": "quickFix",
+    "cSpell.allowCompoundWords": true,
+    
     // LaTeX
     "latex-workshop.latex.tools": [
         {
