@@ -1,4 +1,5 @@
 {
+    // Terminal Bash
     "terminal.integrated.profiles.windows": {
         "Git Bash": {
             "path": "C:\\Program Files\\Git\\bin\\bash.exe",
@@ -25,14 +26,6 @@
         {
             "name": "bibtex",
             "command": "bibtex",
-            "args": [
-                "%DOCFILE%",
-            ],
-            "env": {}
-        },
-        {
-            "name": "makeglossaries",
-            "command": "makeglossaries",
             "args": [
                 "%DOCFILE%",
             ],
@@ -68,14 +61,15 @@
                 "pdflatex",
                 "bibtex",
                 "pdflatex",
-                "makeglossaries",
                 "pdflatex",
                 "pdflatex"
             ]
         },
     ],
+    
     "latex-workshop.latex.autoBuild.run" : "never",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    
     "latex-workshop.latex.clean.method": "glob",
     "latex-workshop.latex.autoClean.run" : "onSucceeded",
     "latex-workshop.latex.clean.subfolder.enabled": true,
